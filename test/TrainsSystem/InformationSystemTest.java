@@ -47,5 +47,10 @@ public class InformationSystemTest {
         informationSystem.getDistanceForRoute("A-E-D");
     }
 
+    @Test
+    public void test_should_return_number_of_trips_within_maximum_stops() throws Exception {
+        int numberOfTrips = informationSystem.getNumberOfTripsWithinMaxStops('C', 'C', 3);
 
+        assertEquals(2,numberOfTrips);
+    }
 }

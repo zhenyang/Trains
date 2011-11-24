@@ -41,6 +41,27 @@ public class GraphTest {
         graph.getDistanceForRoute(nodes);
     }
 
+    @Test
+    public void test_should_return_edges_start_from_given_node() throws Exception {
+        Graph graph = new Graph(createEdges("AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7"));
+        List<Edge> edges = graph.getEdgesStartFrom(new Node('A'));
+
+        assertEquals(3, edges.size());
+    }
+
+    private List<Edge> createEdges(String edgesParam) {
+        List<Edge> edges = new ArrayList<Edge>();
+        String[] strEdges = edgesParam.split(", ");
+        for (String strEdge : strEdges) {
+            Node start = new Node(strEdge.charAt(0));
+            Node end = new Node(strEdge.charAt(1));
+            int distance = Integer.parseInt(strEdge.substring(2));
+            Edge edge = new Edge(start, end, distance);
+            edges.add(edge);
+        }
+        return edges;
+    }
+
     private List<Edge> createTwoEdges() {
         List<Edge> edges = new ArrayList<Edge>();
         Edge edge1 = new Edge(new Node('A'), new Node('B'), 5);

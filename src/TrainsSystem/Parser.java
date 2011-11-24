@@ -34,4 +34,8 @@ public class Parser {
 
         return new Edge(start, end, distance);
     }
+
+    public Node pareNode(char name) {
+        return new Node(name);
+    }
 }

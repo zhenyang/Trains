@@ -41,4 +41,21 @@ public class Graph {
         }
         throw new NoSuchRouteException();
     }
+
+    public List<Trip> getTripsWithinMaxStops(Node start, Node end, int stops) {
+        TripSearcher tripSearcher = new TripSearcher(this);
+        List<Trip> trips = tripSearcher.getTripsWithinMaxStops(start, end, 3);
+        return null;
+    }
+
+    public List<Edge> getEdgesStartFrom(Node startNode) {
+        List<Edge> edges = new ArrayList<Edge>();
+        for (Edge edge : this.edges) {
+            if (edge.getStart().equals(startNode)) {
+                edges.add(edge);
+                System.out.println(edge.getStart().getName() + "++" + edge.getEnd().getName());
+            }
+        }
+        return edges;
+    }
 }
